@@ -48,19 +48,16 @@ yarn preview
 - **Publish directory:** `dist`
 
 ---
-
 ## 🖼️ Screenshots
 
-   ## 🖼️ Screenshots
+### Home Page
+![Home Page](screenshots/home.png)
 
-   ### Home Page
-   ![Home Page](screenshots/home.png)
+### Products Page
+![Products Page](screenshots/products.png)
 
-   ### Products Page
-   ![Products Page](screenshots/products.png)
-
-   ### Product Details
-   ![Product Details](screenshots/details.png)
+### Product Details
+![Product Details](screenshots/details.png)
 
 > **Note:** Apne screenshots ko `screenshots/` folder me daalein aur upar ke file names ke hisaab se rename karein.
 
