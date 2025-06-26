@@ -5,7 +5,7 @@
 
 1. **Repository Clone karo:**
    ```bash
-   git clone https://github.com/YOUR-USERNAME/YOUR-REPO.git
+   git clone https://github.com/chaurasiapk/shop-hub.git
    cd YOUR-REPO
    ```
 
