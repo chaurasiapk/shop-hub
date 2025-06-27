@@ -20,6 +20,7 @@ function App() {
           {/* Application routes */}
           <AllRoutes />
 
+          {/* BackToTop icon */}
           <BackToTop />
         </div>
       </Router>
