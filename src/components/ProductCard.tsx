@@ -1,17 +1,20 @@
-import { Product } from '../types';
+import { Product } from "../types";
 
-import React, { useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { Star, ShoppingCart } from 'lucide-react';
+import React, { useMemo } from "react";
+import { Link } from "react-router-dom";
+import { Star, ShoppingCart } from "lucide-react";
 
-import { useCart } from '../context';
+import { useCart } from "../context";
 
 interface ProductCardProps {
   product: Product;
-  viewMode?: 'grid' | 'list'; // Optional prop to support grid or list view
+  viewMode?: "grid" | "list"; // Optional prop to support grid or list view
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode = "grid" }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  viewMode = "grid",
+}) => {
   const { addItem } = useCart();
 
   // Determine if the current view is list mode
@@ -32,8 +35,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode = "g
         size={16}
         className={`${
           index < Math.floor(rating)
-            ? 'text-yellow-400 fill-current'
-            : 'text-gray-300'
+            ? "text-yellow-400 fill-current"
+            : "text-gray-300"
         }`}
       />
     ));
@@ -43,7 +46,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode = "g
     <Link to={`/product/${product.id}`} className="group">
       <div
         className={`bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group-hover:border-blue-200 ${
-          isListView ? 'flex' : ''
+          isListView ? "flex" : ""
         }`}
       >
         {/* Product Image */}
@@ -52,21 +55,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode = "g
             src={product.image}
             alt={product.title}
             className={`w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300 ${
-              isListView ? 'max-w-[300px]' : ''
+              isListView ? "max-w-[300px]" : ""
             }`}
           />
 
           {/* Floating Add to Cart (hover action) */}
-          <button
+          {/* <button
             onClick={handleAddToCart}
             className="absolute bottom-3 right-3 p-2 bg-blue-600 text-white rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-200 hover:bg-blue-700 transform hover:scale-110"
           >
             <ShoppingCart size={16} />
-          </button>
+          </button> */}
         </div>
 
         {/* Product Details */}
-        <div className={`p-6 ${isListView ? 'w-full' : ''}`}>
+        <div className={`p-6 ${isListView ? "w-full" : ""}`}>
           {/* Category Label */}
           <span className="inline-block px-3 py-1 text-xs font-medium text-blue-600 bg-blue-50 rounded-full mb-3 capitalize">
             {product.category}
@@ -92,9 +95,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, viewMode = "g
             <span className="text-xl font-bold text-gray-900">
               ${product.price.toFixed(2)}
             </span>
+
+            {/* Show shopping cart button for list view on mobile, Add to Cart button otherwise */}
+            {isListView ? (
+              <button
+                onClick={handleAddToCart}
+                className="md:hidden p-2 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-200 transform hover:scale-110"
+              >
+                <ShoppingCart size={16} />
+              </button>
+            ) : null}
             <button
               onClick={handleAddToCart}
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 font-medium text-sm"
+              className={`px-4 py-2 bg-blue-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 font-medium text-sm ${
+                isListView ? "hidden md:block" : ""
+              }`}
             >
               Add to Cart
             </button>
